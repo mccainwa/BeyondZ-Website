@@ -19,16 +19,35 @@
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
     <style>
-      /* Replace gem with branded round logo */
-      #header .logo { display:flex; align-items:center; justify-content:center; }
-      #header .logo img.logo-img{
-        width:84px; height:84px; border-radius:50%;
-        object-fit:contain; display:block;
-        background:rgba(255,255,255,.06);
-        box-shadow:0 0 0 1.5px rgba(255,255,255,.28) inset;
-        padding:10px;
+      /* --- Header logo: remove circular crop & enlarge --- */
+      #header .logo {
+        width: auto; height: auto;
+        border: 0; box-shadow: none; background: transparent;
+        display: flex; align-items: center; justify-content: center;
+        position: relative;
       }
-      #header .content .inner .actions{ margin-top:1.25rem; }
+      /* Hide template's decorative ring if present */
+      #header .logo:before,
+      #header .logo:after { display: none !important; }
+
+      #header .logo img.logo-img{
+        width: clamp(120px, 14vmin, 200px); /* responsive, larger */
+        height: auto;
+        border-radius: 0;         /* prevent cropping */
+        padding: 0;
+        background: transparent;
+        box-shadow: none;
+        object-fit: contain;
+        filter: drop-shadow(0 4px 16px rgba(0,0,0,.25));
+      }
+
+      /* --- Center hero buttons perfectly under the heading --- */
+      #header .content .inner { text-align: center; }
+      #header .content .inner ul.actions{
+        display: flex; justify-content: center; align-items: center;
+        gap: .75rem; margin: 1.25rem auto 0 auto;
+      }
+      #header .content .inner ul.actions li { margin: 0; }
     </style>
   </head>
   <body class="is-preload">
@@ -42,6 +61,7 @@
           <!-- Replaces the circle diamond icon -->
           <img src="images/BZSlogo-256.png" alt="Beyond Z Solutions logo" class="logo-img" />
         </div>
+
         <div class="content">
           <div class="inner">
             <h1>Beyond Z Solutions</h1>
@@ -55,13 +75,13 @@
             </ul>
           </div>
         </div>
+
         <nav>
           <ul>
             <li><a href="#intro">Overview</a></li>
             <li><a href="#work">Services</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
-            <!-- <li><a href="#elements">Elements</a></li> -->
           </ul>
         </nav>
       </header>
@@ -74,16 +94,13 @@
           <h2 class="major">Overview</h2>
           <span class="image main"><img src="images/pic01.jpg" alt="Cloud consulting collaboration" /></span>
           <p>
-            We align modern cloud architecture with measurable business outcomes. From the first migration to
-            multi-cloud scale, we bring pragmatic guidance, secure defaults, and cost-aware patterns so you can ship
-            faster with confidence.
+            We align modern cloud architecture with measurable business outcomes. From first migration to
+            multi-cloud scale, we bring pragmatic guidance, secure defaults, and cost-aware patterns so
+            you can ship faster with confidence.
           </p>
           <p>
-            <strong>Competencies:</strong> Cloud Networking, Security &amp; Identity, Migrations, Cloud Cost Management (FinOps),
-            Application &amp; Web Hosting, Content Delivery, and Big Data Pipelines.
-          </p>
-          <p>
-            <strong>Platforms:</strong> Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP).
+            <strong>Competencies:</strong> Cloud Networking, Security &amp; Identity, Migrations, Cloud Cost
+            Management (FinOps), Application &amp; Web Hosting, Content Delivery, and Big Data Pipelines.
           </p>
         </article>
 
@@ -92,42 +109,20 @@
           <h2 class="major">Services</h2>
           <span class="image main"><img src="images/pic02.jpg" alt="Modern cloud workspace" /></span>
 
-          <h3>Cloud Strategy &amp; Migrations</h3>
-          <p>
-            Assessments, roadmaps, and landing zones. Lift-and-shift, re-platforming, and re-architecture. Hybrid
-            and multi-cloud connectivity with VPN, Direct Connect, and ExpressRoute.
-          </p>
+          <p><strong>Cloud Strategy &amp; Migrations</strong><br/>
+            Roadmaps, landing zones, assessments, lift-and-shift to re-architecture, hybrid connectivity.</p>
 
-          <h3>Networking, Security &amp; Identity</h3>
-          <ul>
-            <li>Zero-trust patterns, network segmentation, VPC/VNet design</li>
-            <li>IAM design &amp; SSO, secrets &amp; key management, governance guardrails</li>
-            <li>WAF, threat detection, posture management, policy-as-code</li>
-          </ul>
+          <p><strong>Networking, Security &amp; Identity</strong><br/>
+            Zero-trust patterns, IAM design, VPC/VNet, VPN/Direct Connect/ExpressRoute, WAF, secrets, policy-as-code.</p>
 
-          <h3>Cost Optimization (FinOps)</h3>
-          <ul>
-            <li>Rightsizing &amp; scheduling, Savings Plans/Reservations strategy</li>
-            <li>Usage analytics &amp; tagging hygiene, budget guardrails &amp; alerts</li>
-            <li>Showback/chargeback, unit economics, KPI dashboards</li>
-          </ul>
+          <p><strong>Cost Optimization (FinOps)</strong><br/>
+            Rightsizing, Savings Plans/Reservations, usage analytics, guardrails, budget alerts, showback/chargeback.</p>
 
-          <h3>App &amp; Web Hosting + Content Delivery</h3>
-          <ul>
-            <li>Containers &amp; serverless, CI/CD pipelines, infrastructure-as-code</li>
-            <li>Global CDN, caching strategy, performance tuning</li>
-            <li>Reliability: SLOs, autoscaling, health checks, graceful deploys</li>
-          </ul>
+          <p><strong>App &amp; Web Hosting + Content Delivery</strong><br/>
+            Containers/serverless, CI/CD pipelines, global CDN, performance tuning, reliability (SLOs, autoscaling).</p>
 
-          <h3>Data Pipelines &amp; Analytics</h3>
-          <ul>
-            <li>Data lakes, ETL/ELT, streaming pipelines, event-driven architectures</li>
-            <li>Warehouse modeling, BI enablement, data governance</li>
-            <li>Observability: lineage, quality checks, cost &amp; performance KPIs</li>
-          </ul>
-
-          <hr/>
-          <p><em>Need something not listed?</em> We tailor engagements from a focused 1–2 week assessment to ongoing hands-on partnership.</p>
+          <p><strong>Data Pipelines &amp; Analytics</strong><br/>
+            Data lakes, ETL/ELT, real-time streaming, warehousing, BI enablement on AWS/Azure/GCP stacks.</p>
         </article>
 
         <!-- About -->
@@ -135,12 +130,9 @@
           <h2 class="major">About</h2>
           <span class="image main"><img src="images/pic03.jpg" alt="Architectural pattern in light and shadow" /></span>
           <p>
-            Beyond Z Solutions helps organizations move beyond the basics—into secure, scalable, and cost-efficient cloud platforms.
-            We’re practitioners first, blending proven patterns with a bias for simplicity so your teams can build and iterate quickly.
-          </p>
-          <p>
-            <strong>Principles:</strong> Security by default • Operational excellence • Cost visibility • Automate the boring •
-            Preference for managed services • Document decisions &amp; metrics.
+            Beyond Z Solutions helps organizations move beyond the basics—into secure, scalable,
+            and cost-efficient cloud platforms. We’re practitioners first, blending proven patterns
+            with a bias for simplicity so your teams can build and iterate quickly.
           </p>
         </article>
 
@@ -168,257 +160,19 @@
               <li><input type="reset" value="Reset" /></li>
             </ul>
           </form>
+
           <ul class="icons">
+            <!-- Replace # with your profiles -->
             <li><a href="#" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
             <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
             <li><a href="mailto:info@beyondzsolutions.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
           </ul>
         </article>
-
-        <!-- Elements / Capabilities Showcase (kept for parity with original length) -->
-        <article id="elements">
-          <h2 class="major">Elements</h2>
-
-          <section>
-            <h3 class="major">Text</h3>
-            <p>
-              <strong>Beyond Z Solutions</strong> provides multi-cloud consulting across AWS, Azure, and GCP.
-              We design resilient architectures, implement secure platforms, and optimize spend—so your teams
-              can focus on building features that matter.
-            </p>
-            <hr />
-            <h4>Blockquote</h4>
-            <blockquote>
-              “Cloud should accelerate your roadmap, not complicate it. Keep it simple, secure, and observable.”
-            </blockquote>
-            <h4>Preformatted</h4>
-<pre><code># Example: IaC decision record (ADR-001)
-Context: Need scalable web app hosting with minimal ops.
-Decision: Use managed container service with CDN and WAF.
-Status: Accepted
-Consequences: Low ops overhead, clear cost model, fast deploys.</code></pre>
-          </section>
-
-          <section>
-            <h3 class="major">Lists</h3>
-
-            <h4>Core Services</h4>
-            <ul>
-              <li>Cloud Strategy &amp; Migrations</li>
-              <li>Networking, Security &amp; Identity</li>
-              <li>Cost Optimization (FinOps)</li>
-              <li>App &amp; Web Hosting + CDN</li>
-              <li>Data Pipelines &amp; Analytics</li>
-            </ul>
-
-            <h4>Engagement Types</h4>
-            <ul class="alt">
-              <li>Assessment &amp; roadmap (1–2 weeks)</li>
-              <li>Pilot build with enablement</li>
-              <li>Platform foundations / landing zone</li>
-              <li>Ongoing hands-on partnership</li>
-            </ul>
-
-            <h4>Typical Steps</h4>
-            <ol>
-              <li>Discovery &amp; goals</li>
-              <li>Architecture options &amp; tradeoffs</li>
-              <li>Implementation &amp; automation</li>
-              <li>Observability &amp; cost guardrails</li>
-              <li>Handover &amp; documentation</li>
-            </ol>
-
-            <h4>Icons</h4>
-            <ul class="icons">
-              <li><a href="#" class="icon brands fa-aws"><span class="label">AWS</span></a></li>
-              <li><a href="#" class="icon brands fa-microsoft"><span class="label">Azure</span></a></li>
-              <li><a href="#" class="icon brands fa-google"><span class="label">GCP</span></a></li>
-              <li><a href="#" class="icon solid fa-shield-alt"><span class="label">Security</span></a></li>
-            </ul>
-
-            <h4>Actions</h4>
-            <ul class="actions">
-              <li><a href="#contact" class="button primary">Book a Consultation</a></li>
-              <li><a href="#work" class="button">View Services</a></li>
-            </ul>
-            <ul class="actions stacked">
-              <li><a href="#contact" class="button primary">Start a Project</a></li>
-              <li><a href="#intro" class="button">Read Overview</a></li>
-            </ul>
-          </section>
-
-          <section>
-            <h3 class="major">Capabilities Matrix</h3>
-            <h4>Default</h4>
-            <div class="table-wrapper">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Area</th>
-                    <th>Description</th>
-                    <th>Platforms</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Migrations</td>
-                    <td>Landing zones, assessments, LIFT+SHIFT → re-platform.</td>
-                    <td>AWS / Azure / GCP</td>
-                  </tr>
-                  <tr>
-                    <td>Networking</td>
-                    <td>VPC/VNet design, peering, transit, hybrid connectivity.</td>
-                    <td>AWS / Azure / GCP</td>
-                  </tr>
-                  <tr>
-                    <td>Security &amp; Identity</td>
-                    <td>IAM, SSO, secrets, WAF, posture, policy-as-code.</td>
-                    <td>AWS / Azure / GCP</td>
-                  </tr>
-                  <tr>
-                    <td>FinOps</td>
-                    <td>Rightsizing, reservations, budgets, tagging, dashboards.</td>
-                    <td>All</td>
-                  </tr>
-                  <tr>
-                    <td>Data &amp; Analytics</td>
-                    <td>Lakes, ETL/ELT, streaming, warehousing, BI.</td>
-                    <td>All</td>
-                  </tr>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <td colspan="2"></td>
-                    <td>End-to-end Enablement</td>
-                  </tr>
-                </tfoot>
-              </table>
-            </div>
-
-            <h4>Alternate</h4>
-            <div class="table-wrapper">
-              <table class="alt">
-                <thead>
-                  <tr>
-                    <th>Cost Lever</th>
-                    <th>Example</th>
-                    <th>Impact</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Rightsize</td>
-                    <td>Downsize CPU/RAM on underutilized nodes</td>
-                    <td>10–35%</td>
-                  </tr>
-                  <tr>
-                    <td>Autoscale</td>
-                    <td>Scale to zero for bursty workloads</td>
-                    <td>5–25%</td>
-                  </tr>
-                  <tr>
-                    <td>Reservations</td>
-                    <td>Savings Plans / RIs on steady state</td>
-                    <td>20–60%</td>
-                  </tr>
-                  <tr>
-                    <td>Storage tiers</td>
-                    <td>Lifecycle policies to infrequent/archive</td>
-                    <td>10–40%</td>
-                  </tr>
-                  <tr>
-                    <td>Data transfer</td>
-                    <td>CDN + cache strategy</td>
-                    <td>Variable</td>
-                  </tr>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <td colspan="2"></td>
-                    <td>Stack dependent</td>
-                  </tr>
-                </tfoot>
-              </table>
-            </div>
-          </section>
-
-          <section>
-            <h3 class="major">Buttons</h3>
-            <ul class="actions">
-              <li><a href="#contact" class="button primary">Primary</a></li>
-              <li><a href="#work" class="button">Default</a></li>
-            </ul>
-            <ul class="actions">
-              <li><a href="#work" class="button">Default</a></li>
-              <li><a href="#contact" class="button small">Small</a></li>
-            </ul>
-            <ul class="actions">
-              <li><a href="#contact" class="button primary icon solid fa-paper-plane">Icon</a></li>
-              <li><a href="#intro" class="button icon solid fa-book-open">Icon</a></li>
-            </ul>
-            <ul class="actions">
-              <li><span class="button primary disabled">Disabled</span></li>
-              <li><span class="button disabled">Disabled</span></li>
-            </ul>
-          </section>
-
-          <section>
-            <h3 class="major">Form</h3>
-            <form method="post" action="#">
-              <div class="fields">
-                <div class="field half">
-                  <label for="demo-name">Name</label>
-                  <input type="text" name="demo-name" id="demo-name" placeholder="Jane Doe" />
-                </div>
-                <div class="field half">
-                  <label for="demo-email">Email</label>
-                  <input type="email" name="demo-email" id="demo-email" placeholder="jane@example.com" />
-                </div>
-                <div class="field">
-                  <label for="demo-category">Category</label>
-                  <select name="demo-category" id="demo-category">
-                    <option value="">-</option>
-                    <option value="assessment">Assessment</option>
-                    <option value="migration">Migration</option>
-                    <option value="security">Security &amp; Identity</option>
-                    <option value="finops">FinOps</option>
-                    <option value="data">Data &amp; Analytics</option>
-                  </select>
-                </div>
-                <div class="field half">
-                  <input type="radio" id="demo-priority-low" name="demo-priority" checked>
-                  <label for="demo-priority-low">Low</label>
-                </div>
-                <div class="field half">
-                  <input type="radio" id="demo-priority-high" name="demo-priority">
-                  <label for="demo-priority-high">High</label>
-                </div>
-                <div class="field half">
-                  <input type="checkbox" id="demo-copy" name="demo-copy">
-                  <label for="demo-copy">Email me a copy</label>
-                </div>
-                <div class="field half">
-                  <input type="checkbox" id="demo-human" name="demo-human" checked>
-                  <label for="demo-human">Not a robot</label>
-                </div>
-                <div class="field">
-                  <label for="demo-message">Message</label>
-                  <textarea name="demo-message" id="demo-message" placeholder="Describe your goals, timelines, and constraints." rows="6"></textarea>
-                </div>
-              </div>
-              <ul class="actions">
-                <li><input type="submit" value="Send Message" class="primary" /></li>
-                <li><input type="reset" value="Reset" /></li>
-              </ul>
-            </form>
-          </section>
-        </article>
-
       </div>
 
       <!-- Footer -->
       <footer id="footer">
-        <p class="copyright">&copy; <span id="year"></span> Beyond Z Solutions. </a>.</p>
+        <p class="copyright">&copy; <span id="year"></span> Beyond Z Solutions.</p>
       </footer>
     </div>
 
